@@ -1,0 +1,5 @@
+mix deps.get
+mix do compile
+mix ecto.create
+mix ecto.migrate
+mix phx.server

@@ -1,0 +1,30 @@
+version: "3.2"
+
+services:
+  phoenix:
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    environment:
+      DB_USER: user
+      DB_PASSWORD: secret
+      DB_DATABASE: vrn
+      DB_PORT: 3306
+      DB_HOST: db
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+  db:
+    image: mysql:8.3
+    environment:
+      MYSQL_ROOT_PASSWORD: rootsecret
+      MYSQL_DATABASE: vrn
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    restart: always
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
