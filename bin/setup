@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eux
+
+mix deps.get
+mix assets.setup
+mix deps.compile
